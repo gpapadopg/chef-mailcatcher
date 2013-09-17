@@ -1,0 +1,5 @@
+; smtp_port = 1025
+; sendmail_from = "vagrant@localhost"
+; sendmail_path = <%= node['mailcatcher']['bin'] %> --smtp-port <%= node['mailcatcher']['smtp-port'] %> -f vagrant@localhost
+
+sendmail_path = /opt/vagrant_ruby/bin/catchmail --smtp-port <%= node['mailcatcher']['smtp-port'] %> -f vagrant@localhost
