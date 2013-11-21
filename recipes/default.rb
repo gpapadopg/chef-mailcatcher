@@ -17,7 +17,7 @@ end
 # Install MailCatcher
 gem_package "mailcatcher"
 
-# Publish PHP configuration
+# Create service file
 template "/etc/init.d/mailcatcher" do
     source "mailcatcher.service.erb"
     owner "root"

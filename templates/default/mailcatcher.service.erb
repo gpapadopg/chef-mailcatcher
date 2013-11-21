@@ -1,10 +1,10 @@
 start() {
     echo "Starting mailcatcher"
-    #{node['mailcatcher']['bin']} \
-        --http-ip #{node['mailcatcher']['http-ip']} \
-        --http-port #{node['mailcatcher']['http-port']} \
-        --smtp-ip #{node['mailcatcher']['smtp-ip']} \
-        --smtp-port #{node['mailcatcher']['smtp-port']}
+    <%= node['mailcatcher']['bin'] %> \
+        --http-ip   <%= node['mailcatcher']['http-ip'] %> \
+        --http-port <%= node['mailcatcher']['http-port'] %> \
+        --smtp-ip   <%= node['mailcatcher']['smtp-ip'] %> \
+        --smtp-port <%= node['mailcatcher']['smtp-port'] %>
 }
 
 stop() {
@@ -29,3 +29,5 @@ restart)
 ;;
 *)
     echo $"Usage: $0 {start|stop|restart}"
+;;
+
