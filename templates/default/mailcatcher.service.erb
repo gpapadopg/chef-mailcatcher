@@ -1,32 +1,31 @@
 start() {
-        echo "Starting myService"
-        #{node['mailcatcher']['bin']} \
-            --http-ip #{node['mailcatcher']['http-ip']} \
-            --http-port #{node['mailcatcher']['http-port']} \
-            --smtp-ip #{node['mailcatcher']['smtp-ip']} \
-            --smtp-port #{node['mailcatcher']['smtp-port']}
+    echo "Starting mailcatcher"
+    #{node['mailcatcher']['bin']} \
+        --http-ip #{node['mailcatcher']['http-ip']} \
+        --http-port #{node['mailcatcher']['http-port']} \
+        --smtp-ip #{node['mailcatcher']['smtp-ip']} \
+        --smtp-port #{node['mailcatcher']['smtp-port']}
 }
 
 stop() {
-        echo "Stopping myService"
-        killall mailcatcher
+    echo "Stopping mailcatcher"
+    killall mailcatcher
 }
 
 restart() {
-        stop
-        start
+    stop
+    start
 }
 
 case "$1" in 
 start)
-        start
+    start
 ;;
 stop)
-        stop
+    stop
 ;;
 restart)
-        restart
+    restart
 ;;
 *)
-
-echo $"Usage: $0 {start|stop|restart}"
+    echo $"Usage: $0 {start|stop|restart}"
