@@ -1,6 +1,6 @@
 start() {
     echo "Starting mailcatcher"
-    <%= node['mailcatcher']['bin'] %> \
+    mailcatcher \
         --http-ip   <%= node['mailcatcher']['http-ip'] %> \
         --http-port <%= node['mailcatcher']['http-port'] %> \
         --smtp-ip   <%= node['mailcatcher']['smtp-ip'] %> \
@@ -30,4 +30,5 @@ restart)
 *)
     echo $"Usage: $0 {start|stop|restart}"
 ;;
+esac
 
