@@ -1,0 +1,32 @@
+start() {
+        echo "Starting myService"
+        #{node['mailcatcher']['bin']} \
+            --http-ip #{node['mailcatcher']['http-ip']} \
+            --http-port #{node['mailcatcher']['http-port']} \
+            --smtp-ip #{node['mailcatcher']['smtp-ip']} \
+            --smtp-port #{node['mailcatcher']['smtp-port']}
+}
+
+stop() {
+        echo "Stopping myService"
+        killall mailcatcher
+}
+
+restart() {
+        stop
+        start
+}
+
+case "$1" in 
+start)
+        start
+;;
+stop)
+        stop
+;;
+restart)
+        restart
+;;
+*)
+
+echo $"Usage: $0 {start|stop|restart}"
