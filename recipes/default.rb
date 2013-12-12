@@ -26,6 +26,11 @@ template "/etc/init.d/mailcatcher" do
     action :create
 end
 
+bash "install_mailcatcher_service" do
+    user "root"
+    code "update-rc.d mailcatcher defaults 98 02"
+end
+
 # Generate the command
 #command = ["mailcatcher"]
 #command << "--http-ip #{node['mailcatcher']['http-ip']}"
