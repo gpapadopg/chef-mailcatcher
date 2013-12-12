@@ -28,7 +28,7 @@ end
 
 bash "install_mailcatcher_service" do
     user "root"
-    code "update-rc.d mailcatcher defaults 98 02"
+    code "update-rc.d mailcatcher defaults 99 01"
 end
 
 # Generate the command
