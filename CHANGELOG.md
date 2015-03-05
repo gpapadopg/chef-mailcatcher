@@ -2,6 +2,11 @@
 
 This file is used to list changes made in each version of MailCatcher.
 
+## latest
+
+* Pin to v0.5.12
+* Installed mailcatcher as a service
+
 ## 0.1.4:
 
 * Support for CentOS (sqlite instead of libsqlite3-dev)

@@ -3,6 +3,7 @@
 # Recipe:: default
 #
 # Copyright 2013, Bryan te Beek
+# This version Copyright 2014-2015, George Papadopoulos
 #
 
 # This is a dependency of MailCatcher
@@ -14,8 +15,15 @@ case node['platform_family']
         package "libsqlite3-dev"
 end
 
+gem_package "i18n" do
+    version "0.6.11"
+end
+
 # Install MailCatcher
-gem_package "mailcatcher"
+gem_package "mailcatcher" do
+    # Pin to this version - later versions produces a confict with i18n
+    version "0.5.12"
+end
 
 # Create service file
 template "/etc/init.d/mailcatcher" do
@@ -30,17 +38,3 @@ bash "install_mailcatcher_service" do
     user "root"
     code "update-rc.d mailcatcher defaults 99 01"
 end
-
-# Generate the command
-#command = ["mailcatcher"]
-#command << "--http-ip #{node['mailcatcher']['http-ip']}"
-#command << "--http-port #{node['mailcatcher']['http-port']}"
-#command << "--smtp-ip #{node['mailcatcher']['smtp-ip']}"
-#command << "--smtp-port #{node['mailcatcher']['smtp-port']}"
-#command = command.join(" ")
-
-# Start MailCatcher
-#bash "mailcatcher" do
-#    not_if "ps ax | grep -E 'mailcatche[r]'"
-#    code command
-#end
